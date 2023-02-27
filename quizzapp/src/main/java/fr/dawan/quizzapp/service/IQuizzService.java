@@ -7,8 +7,9 @@ import fr.dawan.quizzapp.entities.Quizz;
 public interface IQuizzService {
 	List<Quizz> findAll();
 	Quizz createQuizz( Quizz quizz); 	
-	Quizz findById(Long id);
+	Quizz findQuizzById(long id);
 	void deleteQuizzById(Long id);
 	Quizz updateQuizzById(Quizz quizz,long id);
+	List<Quizz> trouver();
 
 }

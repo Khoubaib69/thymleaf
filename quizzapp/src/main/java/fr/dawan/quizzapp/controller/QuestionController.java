@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.dawan.quizzapp.entities.Question;
+import fr.dawan.quizzapp.entities.Quizz;
 import fr.dawan.quizzapp.service.IQuestionService;
+import fr.dawan.quizzapp.service.IQuizzService;
 
 @RestController
 @RequestMapping("/api/question")
@@ -23,6 +25,8 @@ public class QuestionController {
 	
 	@Autowired
 	private IQuestionService service;
+	@Autowired
+	private IQuizzService qservice;
 	
 	@GetMapping(produces="application/json")
 	public List<Question> findAll(){
@@ -32,6 +36,16 @@ public class QuestionController {
 	@GetMapping(value = "/{id:[0-9]+}", produces ="application/json")
 	public ResponseEntity<Question> findQuestionById(@PathVariable long id)   {
 		Question q = service.findById(id);
+		if (q!=null)
+		{ return ResponseEntity.ok(q);}
+		return ResponseEntity.notFound().build();
+	
+	}
+	@GetMapping(value = "listquestions/{id:[0-9]+}", produces ="application/json")
+	public ResponseEntity<List<Question>> findQuestionByQuizzId(@PathVariable long id)   {
+		Quizz quizz = qservice.findQuizzById(id);
+		//List<Question> q = service.findquestionByIdQuizz(quizz);
+		List<Question> q =  (List<Question>) quizz.getQuestion();
 		if (q!=null)
 		{ return ResponseEntity.ok(q);}
 		return ResponseEntity.notFound().build();

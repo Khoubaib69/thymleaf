@@ -28,12 +28,11 @@ public class QuizzService implements IQuizzService{
 	}
 
 	@Override
-	public Quizz findById(Long id) {
-		Optional<Quizz> q = qRepository.findById(id);
-				if (q.isPresent())
-				{q.get();}
+	public Quizz findQuizzById(long id) {
+	Quizz q = qRepository.findById(id).get();
+				
 		
-		return null;
+		return q;
 	}
 
 	@Override
@@ -49,6 +48,12 @@ public class QuizzService implements IQuizzService{
 			return qRepository.saveAndFlush(quizz);
 		}
 		return null;
+	}
+
+	@Override
+	public List<Quizz> trouver() {
+		// TODO Auto-generated method stub
+		return qRepository.trouver();
 	}
 
 }

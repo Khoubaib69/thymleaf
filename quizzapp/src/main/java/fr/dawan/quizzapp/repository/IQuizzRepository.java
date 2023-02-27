@@ -11,9 +11,10 @@ import fr.dawan.quizzapp.entities.Users;
 @Repository
 public interface IQuizzRepository extends JpaRepository<Quizz, Long> {
 	
-	List<Quizz> findAll();
+	//List<Quizz> findAll();
 //	Quizz findById(Long Id);
 	//@Query("FROM Quizz q where q.quizzId=:id")
 	//Quizz findQuizzById (long id);
-
+	@Query("From Quizz q")
+	List<Quizz> trouver ();
 }

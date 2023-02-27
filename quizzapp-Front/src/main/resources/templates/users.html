@@ -34,7 +34,7 @@
 		Password:<input type="text" th:field="*{password}" class="form-control" />
 		<div class="alert alert-warning"
 			th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div><br/>
-	
+			Admin: <input type="checkbox" th:field="*{admin}" checked="*{admin}"classe="form-control" /><br/>
 		<button type="submit" class="btn btn-primary">valider</button>
 
 	</form>

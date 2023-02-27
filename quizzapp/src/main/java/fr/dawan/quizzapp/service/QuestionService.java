@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.dawan.quizzapp.entities.Question;
+import fr.dawan.quizzapp.entities.Quizz;
 import fr.dawan.quizzapp.repository.IQuestionRepository;
 
 @Service
@@ -52,6 +53,12 @@ public class QuestionService implements IQuestionService{
 			return questionRepository.saveAndFlush(question);
 		}
 		return null;
+	}
+
+	@Override
+	public List<Question> findquestionByIdQuizz(Quizz quizz) {
+		
+		return questionRepository.findQuestionByQuizzId(quizz);
 	}
 
 }

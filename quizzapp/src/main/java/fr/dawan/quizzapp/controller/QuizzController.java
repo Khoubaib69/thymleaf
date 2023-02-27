@@ -23,17 +23,18 @@ import fr.dawan.quizzapp.service.IQuizzService;
 @RestController
 @RequestMapping("/api/quizz")
 public class QuizzController {
+	
 	@Autowired 
 	private IQuizzService service;
+	
 	@GetMapping(produces="application/json")
 	public List<Quizz> findAll(){
-	return service.findAll();
+	return service.trouver();
 	}
 	
 	@GetMapping(value = "/{id:[0-9]+}", produces ="application/json")
-	
 	public ResponseEntity<Quizz> findQuizzById(@PathVariable long id)   {
-		Quizz q = service.findById(id);
+		Quizz q = service.findQuizzById(id);
 		if (q!=null)
 		{return ResponseEntity.ok(q);}
 		

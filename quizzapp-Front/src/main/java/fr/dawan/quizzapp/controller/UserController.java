@@ -11,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,11 +20,15 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fr.dawan.quizzapp.entities.LoginDto;
+import fr.dawan.quizzapp.entities.LoginResponseDto;
 import fr.dawan.quizzapp.entities.Users;
 import fr.dawan.quizzapp.formBeans.UserForm;
 @Controller
@@ -91,4 +96,70 @@ public class UserController {
 	public UserForm getUserForm () {
 		return new UserForm();
 	}
+	@GetMapping("users/delete/{id}")
+	public String DeleteUser(@PathVariable("id") int id) {
+		
+		restTemplate.delete(BASE_URL+"/api/users/delete/"+id);
+		
+		return "redirect:/users";
+	}
+	@GetMapping("users/update/{id}")
+	public String Update(@PathVariable("id") int id, Model model, HttpSession session) {
+		
+		Users user = restTemplate.getForObject(BASE_URL+"/api/users/"+id, Users.class);
+		
+		
+		
+		
+		UserForm userForm = new UserForm();
+		BeanUtils.copyProperties(user, userForm);
+		
+		getAllUsers(model);
+		model.addAttribute("userForm", userForm);
+		
+		return "users";
+	}
+	@PostMapping("/connexion")
+	public String Connect(@RequestParam("email") String email, @RequestParam("password") String password, Model model, HttpSession session) {
+		
+		LoginDto loginDto = new LoginDto();
+		loginDto.setEmail(email);
+		loginDto.setPassword(password);
+		try {
+			
+			ResponseEntity<LoginResponseDto> response = restTemplate.postForEntity(BASE_URL+"/login", loginDto, LoginResponseDto.class);
+			
+			if(response.getStatusCode().equals(HttpStatus.OK)) {
+				//connexion OK
+				
+				LoginResponseDto loginResponseDTO = response.getBody();
+				session.setAttribute("loginResponseDto", loginResponseDTO);
+				
+				//getAllUsers(model, session);
+				return "redirect:/users";
+				
+			}else {
+				
+				model.addAttribute("Error", "Echec connexion.........");
+				return "login";
+			}
+			
+		} catch (Exception e) {
+			
+			model.addAttribute("Error", "Echec connexion.........");
+			return "login";
+		}
+	
+		
+		
+	}
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	@GetMapping("/create-account")
+	public String createAccount() {
+		return "create-account";
+	}
+	
 }
