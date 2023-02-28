@@ -159,9 +159,13 @@ public class UserController {
 	public String login() {
 		return "login";
 	}
-	@GetMapping("/create-account")
+	@GetMapping("/createaccount")
 	public String createAccount() {
-		return "create-account";
+		return "createaccount";
+	}
+	@GetMapping("/utilisateur")
+	public String user() {
+		return "utilisateur";
 	}
 	
 }
