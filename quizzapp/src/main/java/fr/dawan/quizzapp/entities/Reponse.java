@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +18,7 @@ public class Reponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long reponseId;
-	private String text;
+	private String reponse;
 	private boolean isCorrect;
 	
 	public long getReponseId() {
@@ -28,11 +30,11 @@ public class Reponse {
 	}
 
 	public String getReponse() {
-		return text;
+		return reponse;
 	}
 
 	public void setReponse(String reponse) {
-		this.text = reponse;
+		this.reponse = reponse;
 	}
 
 	public boolean isCorrect() {
@@ -50,7 +52,7 @@ public class Reponse {
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
-
+	@JsonIgnore
 	@ManyToOne
 	private Question question;
 	

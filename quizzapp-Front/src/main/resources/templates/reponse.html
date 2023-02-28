@@ -9,60 +9,42 @@
 </head>
 
 <body>
-	<h3>Liste des quizzs</h3>
+	<h3>Liste des réponses</h3>
 	<br />
 	<br />
 	<div class="container">
 
-		<br />
-<!--		<div class="container">-->
-<!--	<form th:action="@{/users/addOrUpdate}" method="POST"-->
-<!--		 th:object="${userForm}">-->
-<!--		ID: <input type="text" th:field="*{userId}" class="form-control"-->
-<!--			readonly="readonly" /><br/> -->
-			
-<!--			First Name:<input type="text" th:field="*{nom}"-->
-<!--			class="form-control" />-->
-<!--		<div class="alert alert-warning"-->
-<!--			th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></div><br/>-->
-<!--		Last Name:<input type="text" th:field="*{prenom}" class="form-control" />-->
-<!--		<div class="alert alert-warning"-->
-<!--			th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></div><br/>-->
-<!--		Email:<input type="text" th:field="*{email}" class="form-control" />-->
-<!--		<div class="alert alert-warning" th:if="${#fields.hasErrors('email')}"-->
-<!--			th:errors="*{email}"></div><br/>-->
-<!--		Password:<input type="text" th:field="*{password}" class="form-control" />-->
-<!--		<div class="alert alert-warning"-->
-<!--			th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div><br/>-->
-<!--			Admin: <input type="checkbox" th:field="*{admin}" checked="*{admin}"classe="form-control" /><br/>-->
-<!--		<button type="submit" class="btn btn-primary">valider</button>-->
+<form th:action="@{/quizz/questions/reponses/verfier}" method="POST"
+		 modelAttribute="reponse">
+		
+		<button type="submit" class="btn btn-primary">valider</button>
 
-<!--	</form>-->
-<!--	<div th:if="${Message}" th:text="${Message}" style="color: red">-->
-<!--	</div>-->
-<!--	</div>-->
+	</form>
 		<br />
-
+	
 		<div class="container">
 			<table class="table table-striped">
 				<tr>
-<!--					<th>Id</th>-->
+					<!--					<th>Id</th>-->
 					<th>Réponses</th>
-					
-<!--					<th>Actions</th>-->
+
+					<!--					<th>Actions</th>-->
 				</tr>
-				<tr th:each="q:${reponse}">
-					<td th:text="${q.text}"></td>
-<!--					<td th:text="${u.nom}"></td>-->
-<!--					<td th:text="${u.email}"></td>-->
-<!--				<td><input type="checkbox" th:checked="${u.admin}"/></td>-->
-<!--					<td><a th:href="@{/quizz/questions/{id}(id=${q.quizzId})}" class="btn btn-danger">selectionner</a> -->
+				<tr th:each="r:${reponse}">
+					<td th:text="${r.reponse}"  path="isCorrect">
 
 
-					
+					</td>
+
+					<td><input  type="radio" name="reponse" th:id="${r.reponseId}" th:field="*{isCorrect}" ></td>
+
+
+
 				</tr>
 			</table>
-
+			
+			
+	<div><a th:href="@{/quizz/questions/reponses/verfier}" class="btn btn-danger">vérifier</a> </div>
 		</div>
 	</div>
 

@@ -7,6 +7,7 @@ public class LoginResponseDto implements Serializable{
 	private int userId;
 	private String nom;
 	private String prenom;
+	
 	public LoginResponseDto() {
 		super();
 	}

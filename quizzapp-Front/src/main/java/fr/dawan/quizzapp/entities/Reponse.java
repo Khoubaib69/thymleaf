@@ -1,8 +1,8 @@
 package fr.dawan.quizzapp.entities;
 
-public class reponse {
+public class Reponse {
 	private long reponseId;
-	private String text;
+	private String reponse;
 	private boolean isCorrect;
 	public long getReponseId() {
 		return reponseId;
@@ -10,11 +10,12 @@ public class reponse {
 	public void setReponseId(long reponseId) {
 		this.reponseId = reponseId;
 	}
-	public String getText() {
-		return text;
+	
+	public String getReponse() {
+		return reponse;
 	}
-	public void setText(String text) {
-		this.text = text;
+	public void setReponse(String reponse) {
+		this.reponse = reponse;
 	}
 	public boolean isCorrect() {
 		return isCorrect;
@@ -22,12 +23,13 @@ public class reponse {
 	public void setCorrect(boolean isCorrect) {
 		this.isCorrect = isCorrect;
 	}
-	public reponse(String text, boolean isCorrect) {
+	
+	public Reponse(String reponse, boolean isCorrect) {
 		super();
-		this.text = text;
+		this.reponse = reponse;
 		this.isCorrect = isCorrect;
 	}
-	public reponse() {
+	public Reponse() {
 		super();
 	}
 	

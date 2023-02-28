@@ -136,7 +136,9 @@ public class UserController {
 				session.setAttribute("loginResponseDto", loginResponseDTO);
 				
 				//getAllUsers(model, session);
-				return "redirect:/users";
+				if (loginResponseDTO.isAdmin()==true){
+				return "redirect:/users";}
+				else {return "redirect:/utilisateur";}
 				
 			}else {
 				

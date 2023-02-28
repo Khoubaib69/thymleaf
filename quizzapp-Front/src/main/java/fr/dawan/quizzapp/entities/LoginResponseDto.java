@@ -7,8 +7,17 @@ private String prenom;
 private String email;
 
 private String password;
-
+private boolean admin;
 	
+	public boolean isAdmin() {
+	return admin;
+}
+public void setAdmin(boolean admin) {
+	this.admin = admin;
+}
+public void setPassword(String password) {
+	this.password = password;
+}
 	private String nom;
 	public long getUserId() {
 		return userId;

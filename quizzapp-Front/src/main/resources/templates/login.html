@@ -1,19 +1,97 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout">
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Creative - Start Bootstrap Theme</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<!-- Bootstrap Icons-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+	<!-- Google fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+		rel="stylesheet" type="text/css" />
+	<!-- SimpleLightbox plugin CSS-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link th:href="@{dist/css/styles.css}" rel="stylesheet" />
+</head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-<h4>Authentification</h4>
+<!--<body>-->
+<!--<h4>Authentification</h4>-->
 
-<br/><br/>
-<form th:action="@{/connexion}" method="POST">
-Email: <input type="text" name="email" ></input>
-Password: <input type="password" name="password" ></input>
-<button type="submit">Login</button>
-</form>
-<div th:if="${Error}" th:text="${Error}"></div>
+<!--<br/><br/>-->
+<!--<form th:action="@{/connexion}" method="POST">-->
+<!--Email: <input type="text" name="email" ></input>-->
+<!--Password: <input type="password" name="password" ></input>-->
+<!--<button type="submit">Login</button>-->
+<!--</form>-->
+<!--<div th:if="${Error}" th:text="${Error}"></div>-->
+<!--</body>-->
+<!--</html>-->
+
+<body id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+
+			</div>
+		</div>
+	</nav>
+	<!-- Masthead-->
+	<header class="masthead">
+		<div class="container px-4 px-lg-5 h-100">
+			<div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+				<h2 class="text-white font-weight-bold">Authentification</h2>
+				<form class="text-white font-weight-bold" th:action="@{/connexion}" method="POST">
+					Email: <input  type="text" name="email"></input>
+					Password: <input  type="password" name="password"></input>
+					<button class="btn btn-outline-dark" type="submit">Login</button>
+				</form>
+				<div th:if="${Error}" th:text="${Error}"></div>
+<!--				<div class="col-lg-8 align-self-end">-->
+<!--					<h1 class="text-white font-weight-bold">Your Favorite Place for Free Bootstrap Themes</h1>-->
+<!--					<hr class="divider" />-->
+<!--				</div>-->
+
+			</div>
+		</div>
+	</header>
+	<!-- About-->
+
+	<!-- Services-->
+
+	<!-- Portfolio-->
+
+	<!-- Contact-->
+
+	<!-- Footer-->
+	<footer class="bg-light py-5">
+		<div class="container px-4 px-lg-5">
+			<div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div>
+		</div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- SimpleLightbox plugin JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<!-- * *                               SB Forms JS                               * *-->
+	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
+
 </html>
